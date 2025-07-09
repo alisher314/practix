@@ -1,0 +1,379 @@
+body {
+    background-color: #0d0d0d; /* Темный фон */
+    color: #00ff00; /* Ярко-зеленый текст */
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 0 0 5px #00ff00; /* Эффект свечения текста */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    transition: background-color 0.3s ease, filter 0.3s ease; /* Плавный переход для инверсии */
+    overflow: hidden; /* Скрываем полосы прокрутки, чтобы канвас занимал все пространство */
+}
+
+/* Это блок, который отвечает за инверсию цветов */
+body.inverted-colors {
+    background-color: #ff0000; /* Явно красный фон при ошибке */
+    color: #0d0d0d; /* Темный текст на красном фоне */
+    text-shadow: none;
+    filter: none; /* Убираем filter: invert(100%); чтобы вручную контролировать цвета */
+}
+
+.container {
+    background-color: #1a1a1a; /* Темно-серый фон контейнера */
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.7); /* Эффект свечения контейнера */
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 600px;
+    width: 90%; /* Адаптивная ширина */
+    box-sizing: border-box; /* Учитываем padding в ширине */
+}
+
+.screen {
+    width: 100%;
+}
+
+h1, h2, h3 {
+    color: #00ffff; /* Голубой цвет для заголовков */
+    text-shadow: 0 0 8px #00ffff; /* Эффект свечения заголовков */
+    margin-top: 0; /* Убираем верхний отступ у заголовков */
+    font-size: 1.8em; /* Относительный размер для заголовков */
+}
+
+p {
+    margin-bottom: 15px; /* Отступ снизу для параграфов */
+}
+
+button {
+    background-color: #007700; /* Темно-зеленый фон кнопки */
+    color: #00ff00; /* Ярко-зеленый текст кнопки */
+    width: calc(100% - 20px); /* Ширина кнопки с учетом паддингов */
+    padding: 12px 25px;
+    margin: 10px 5px; /* Отступы вокруг кнопок */
+    border: 2px solid #00ff00;
+    border-radius: 4px;
+    font-size: 1em; /* Относительный размер шрифта */
+    cursor: pointer;
+    transition: background-color 0.1s ease, transform 0.2s ease, box-shadow 0.1s ease; /* Плавные переходы */
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 0 0 5px #00ff00; /* Эффект свечения текста кнопки */
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5); /* Эффект свечения кнопки */
+    box-sizing: border-box; /* Учитываем padding и border в ширине */
+}
+
+button:hover {
+    background-color: #00ff00; /* Изменение цвета при наведении */
+    color: #0d0d0d; /* Изменение цвета текста при наведении */
+    transform: translateY(-2px); /* Небольшое поднятие кнопки при наведении */
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.7); /* Усиление свечения при наведении */
+}
+
+button:active {
+    transform: translateY(0); /* Возвращение кнопки в исходное положение при клике */
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5); /* Возвращение свечения */
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    background-color: #005500;
+    color: #00aa00;
+}
+
+/* Стили для кнопки сброса данных */
+.danger-button {
+    background-color: #770000; /* Темно-красный фон */
+    border-color: #ff0000; /* Ярко-красная рамка */
+    color: #ff0000; /* Ярко-красный текст */
+    text-shadow: 0 0 5px #ff0000; /* Красное свечение текста */
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); /* Красное свечение кнопки */
+}
+
+.danger-button:hover {
+    background-color: #ff0000; /* Изменение цвета при наведении */
+    color: #0d0d0d; /* Изменение цвета текста при наведении */
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.7); /* Усиление свечения при наведении */
+}
+
+
+textarea {
+    width: calc(100% - 20px); /* Ширина текстовой области с учетом паддингов */
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #0d0d0d; /* Темный фон */
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    font-family: "JetBrains Mono", "Fira Code", Consolas, "Source Code Pro", "Roboto Mono", monospace; /* Моноширинный шрифт для кода */
+    font-size: 0.9em;
+    resize: vertical; /* Разрешаем изменение размера по вертикали */
+    min-height: 50px;
+    box-sizing: border-box;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5); /* Эффект свечения */
+    caret-color: #00ff00; /* Цвет курсора */
+}
+
+textarea:focus {
+    outline: none; /* Убираем стандартную обводку при фокусе */
+    border-color: #00ffff; /* Изменение цвета рамки при фокусе */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7); /* Усиление свечения при фокусе */
+}
+
+.question-text {
+    background-color: #0a0a0a; /* Еще более темный фон */
+    border: 1px dashed #00ffff; /* Пунктирная рамка */
+    padding: 15px;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    color: #00ffff; /* Цвет текста вопроса */
+    min-height: 80px; /* Минимальная высота для вопроса */
+    display: flex; /* Для центрирования текста по вертикали */
+    align-items: center;
+    justify-content: center;
+    word-wrap: break-word; /* Перенос длинных слов */
+    white-space: pre-wrap; /* Сохраняет пробелы и переносы строк */
+    text-shadow: 0 0 5px #00ffff;
+}
+
+.feedback {
+    margin-top: 15px;
+    min-height: 20px; /* Минимальная высота, чтобы не "прыгал" layout */
+    font-size: 1em;
+}
+
+.feedback.correct {
+    color: #00ff00; /* Зеленый для правильного ответа */
+    text-shadow: 0 0 5px #00ff00;
+}
+
+.feedback.incorrect {
+    color: #ff0000; /* Красный для неправильного ответа */
+    text-shadow: 0 0 5px #ff0000;
+}
+
+.overall-stats, .streak-counter {
+    font-size: 0.9em;
+    margin-top: 20px;
+    color: #00ccff; /* Цвет для общей статистики */
+    text-shadow: 0 0 3px #00ccff;
+}
+
+.streak-counter {
+    margin-bottom: 20px;
+    color: #ffff00; /* Желтый для счетчика серии */
+    text-shadow: 0 0 5px #ffff00;
+}
+
+
+.hidden {
+    display: none !important; /* Важно, чтобы скрывать элементы */
+}
+
+/* Модальные окна */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Полупрозрачный черный фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Поверх всего остального */
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    padding: 25px;
+    border-radius: 8px;
+    border: 2px solid #00ffff; /* Голубая рамка */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.7); /* Голубое свечение */
+    max-width: 700px;
+    width: 90%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #00ff00; /* Ярко-зеленый крестик */
+    font-size: 30px;
+    cursor: pointer;
+    transition: color 0.1s ease;
+}
+
+.close-button:hover {
+    color: #ff0000; /* Красный при наведении */
+}
+
+.modal-info {
+    font-size: 0.8em;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: #00ffff; /* Информационный текст голубой */
+    text-shadow: 0 0 3px #00ffff;
+}
+
+.list-container {
+    max-height: 250px; /* Ограничиваем высоту списка */
+    overflow-y: auto; /* Появляется скроллбар при переполнении */
+    border: 1px solid #00ff00;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 4px;
+    background-color: #0d0d0d; /* Фон как у textarea */
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed #007700; /* Пунктирная разделительная линия */
+    word-break: break-all; /* Разрывает длинные слова, чтобы они не выходили за границы */
+    white-space: pre-wrap; /* Сохраняет пробелы и переносы строк внутри элемента */
+    margin-right: 10px; /* Отступ справа, чтобы не мешать скроллбару */
+}
+
+.list-item:last-child {
+    border-bottom: none; /* Убираем рамку у последнего элемента */
+}
+
+.list-item span {
+    flex-grow: 1; /* Позволяет тексту занимать все доступное пространство */
+    text-align: left;
+    margin-right: 10px; /* Отступ от кнопок */
+}
+
+.list-item button {
+    padding: 5px 10px;
+    font-size: 0.7em;
+    margin: 0 2px;
+    width: auto; /* Кнопки в списке не должны быть 100% ширины */
+}
+
+/* СТИЛИ ДЛЯ ЗАГРУЗКИ ФАЙЛА */
+.file-upload-container {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    border: 1px dashed #00aa00;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: #050505;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.custom-file-upload {
+    background-color: #007700;
+    color: #00ff00;
+    padding: 10px 20px;
+    border: 2px solid #00ff00;
+    border-radius: 4px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.1s ease, transform 0.2s ease, box-shadow 0.1s ease;
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 0 0 5px #00ff00;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    display: inline-block; /* чтобы применялись паддинги */
+    margin-bottom: 10px;
+}
+
+.custom-file-upload:hover {
+    background-color: #00ff00;
+    color: #0d0d0d;
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+}
+
+#excelFileInput {
+    display: none; /* Скрываем стандартный инпут для файла */
+}
+
+.file-name-display {
+    font-size: 0.8em;
+    color: #00ffff;
+    text-shadow: 0 0 3px #00ffff;
+}
+
+/* --- НОВЫЕ СТИЛИ ДЛЯ ЗАСТАВКИ "МАТРИЦА" --- */
+#splashScreen {
+    position: fixed; /* Занимает всю область просмотра */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ширина по всей области просмотра */
+    height: 100vh; /* Высота по всей области просмотра */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0d0d0d; /* Цвет фона, чтобы не было видно контента под ним */
+    z-index: 9999; /* Очень высокий z-index, чтобы быть поверх всего */
+    flex-direction: column; /* Элементы внутри заставки располагаются вертикально */
+}
+
+#matrixCanvas {
+    position: absolute; /* Канвас абсолютно позиционирован внутри splashScreen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Канвас должен быть под текстом */
+}
+
+.splash-text {
+    position: relative; /* Относительно splashScreen */
+    z-index: 2; /* Текст поверх канваса */
+    color: #00ff00; /* Ярко-зеленый цвет текста */
+    font-family: 'Press Start 2P', cursive; /* 8-битный шрифт */
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.8); /* Свечение текста */
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6); /* Полупрозрачный фон для лучшей читаемости */
+    border-radius: 5px;
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+    animation: fadeInScale 2s ease-out forwards; /* Анимация появления */
+}
+
+.splash-text p {
+    font-size: 1.2em; /* Размер для основной надписи */
+    margin-bottom: 10px; /* Отступ между строками */
+    margin-top: 0;
+    line-height: 1.3;
+}
+
+.splash-text a {
+    color: #00ffff; /* Голубой цвет для ссылки */
+    font-size: 0.8em; /* Меньший размер для ссылки */
+    text-decoration: none; /* Убираем подчеркивание */
+    text-shadow: 0 0 5px #00ffff; /* Свечение ссылки */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.splash-text a:hover {
+    color: #ffffff; /* Белый при наведении */
+    text-shadow: 0 0 10px #ffffff; /* Усиленное свечение */
+}
+
+/* Анимация появления для текста заставки */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

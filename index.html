@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тренажер по программированию</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="splashScreen" class="screen">
+        <canvas id="matrixCanvas"></canvas>
+        <div class="splash-text">
+            <p>DESIGN AND PROGRAM BY ALISHER ABDURAKHMANOV</p>
+            <a href="https://github.com/alisher314" target="_blank">github.com/alisher314</a>
+        </div>
+    </div>
+
+    <div class="container hidden"> <div id="mainMenu" class="screen">
+            <h1>Тренажер по программированию</h1>
+            <button id="startGameButton">Начать тренировку</button>
+            <button id="showAddEditModalButton">Добавить/Изменить вопросы</button>
+            <button id="showDeleteModalButton">Удалить вопросы</button>
+            <button id="resetDataButton" class="danger-button">Сбросить Все Данные</button>
+        </div>
+
+        <div id="gameScreen" class="hidden screen">
+            <p class="streak-counter" id="streakCounter">Безошибочных ответов подряд: 0</p>
+            <div class="question-text" id="questionText"></div>
+            <textarea id="answerInput" placeholder="Введите ваш ответ здесь..." rows="5"></textarea>
+            <div id="feedback" class="feedback"></div>
+            <button id="nextButton" class="hidden">Следующий вопрос</button>
+            <button id="backToMenuFromGame">Вернуться в меню</button>
+
+            <div class="overall-stats">
+                <p>Всего вопросов: <span id="totalQuestionsCount">0</span></p>
+                <p>Отвечено вопросов: <span id="answeredQuestionsCount">0</span></p>
+                <p>Правильно отвечено: <span id="correctlyAnsweredCount">0</span></p>
+                <p>Отвечено с ошибками: <span id="withErrorsAnsweredCount">0</span></p>
+            </div>
+        </div>
+
+        <div id="addEditModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-button" data-modal="addEditModal">&times;</span>
+                <h2>Добавить/Изменить вопросы</h2>
+                <textarea id="editQuestionText" placeholder="Введите вопрос"></textarea>
+                <textarea id="editAnswerText" placeholder="Введите ответ"></textarea>
+                <button id="saveQuestionButton">Добавить Вопрос</button>
+
+                <div class="file-upload-container">
+                    <label for="excelFileInput" class="custom-file-upload">
+                        Загрузить из Excel
+                    </label>
+                    <input type="file" id="excelFileInput" accept=".xlsx, .xls">
+                    <span id="fileNameDisplay" class="file-name-display">Файл не выбран</span>
+                    <p class="modal-info">
+                        Загрузите файл Excel (.xlsx или .xls). Вопросы должны быть в первом столбце, ответы во втором.
+                        Первая строка может быть заголовком (например, "Вопрос", "Ответ") - она будет пропущена.
+                    </p>
+                </div>
+
+                <div class="list-container">
+                    <div id="addEditQuestionsList">
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="deleteModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-button" data-modal="deleteModal">&times;</span>
+                <h2>Удалить вопросы</h2>
+                <div class="list-container">
+                    <div id="deleteQuestionsList">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="menuMusic" src="menu_music.mp3" loop preload="auto"></audio>
+    <audio id="gameMusic" src="game_music.mp3" loop preload="auto"></audio>
+    <audio id="errorSound" src="error.mp3" preload="auto"></audio>
+    <audio id="successSound" src="success.mp3" preload="auto"></audio>
+    <audio id="coinSound" src="coin.mp3" preload="auto"></audio>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
