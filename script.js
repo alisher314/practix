@@ -1,4 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     // --- Элементы DOM для экранов ---
     const splashScreen = document.getElementById('splashScreen'); // НОВАЯ КОНСТАНТА ДЛЯ ЗАСТАВКИ
     const mainContainer = document.querySelector('.container'); // Главный контейнер, который содержит все экраны
@@ -351,6 +351,11 @@
             nextButton.classList.add('hidden'); // Если неверно, кнопка скрыта
             correctAnswersInARow = 0; // Сброс серии
             hasErrorOccurredInCurrentAttempt = true; // Устанавливаем флаг ошибки
+
+            // Добавление вибрации при неправильном ответе
+            if ('vibrate' in navigator) {
+                navigator.vibrate([200, 100, 200]); // Паттерн вибрации
+            }
 
             body.classList.add('inverted-colors'); // Включаем инверсию
             if (inversionTimeout) {
